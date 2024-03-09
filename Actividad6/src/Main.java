@@ -2,7 +2,7 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static String nombre="Emilio Sonck";
-    public static double[] calificaciones={70.0,80.8,90.6,30.4,50.3};
+    public static double[] calificaciones={70.0,80.8,90.6,80.4,90.3};
 
     public static void main(String[] args) {
         imprimirDatos();
