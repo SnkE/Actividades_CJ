@@ -4,13 +4,18 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
 public class Main {
+    public static Deck deck= new Deck();
     public static void main(String[] args) {
         System.out.println("..:::Bienvenido a este codigo sobre las cartas del Poker:::..");
-        showMenu();
+        try{
+            showMenu();
+        }catch(Exception e){
+            System.out.println("Se ha producido un error: " + e.getMessage());
+        }
+
     }
 
-    public static void showMenu(){
-        Deck deck= new Deck();
+    public static void showMenu() throws Exception{
         Scanner scanner = new Scanner(System.in);
         System.out.println("Seleccione cualquier opcion:");
         System.out.println("1. Mezclar Deck:");
@@ -23,19 +28,22 @@ public class Main {
             case "1":
                 System.out.println("------------Shuffle:-----------");
                 deck.suffle();
-
+                showMenu();
                 break;
             case "2":
                 System.out.println("------------Head:--------------");
                 deck.head();
+                showMenu();
                 break;
             case "3":
                 System.out.println("------------Pick:--------------");
                 deck.pick();
+                showMenu();
                 break;
             case "4":
                 System.out.println("------------Hand:--------------");
                 deck.hand();
+                showMenu();
                 break;
             case "0":
                 System.out.println("-------------------------------");

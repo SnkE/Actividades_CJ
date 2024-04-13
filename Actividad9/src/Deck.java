@@ -9,7 +9,6 @@ public class Deck {
     public Deck(){
         cartas= new ArrayList<>();
         Inicializar();
-
     }
 
     private void Inicializar() {
@@ -36,23 +35,32 @@ public class Deck {
         System.out.println("Se mezcló el Deck");
     }
 
-    public void head(){
-        Card primeraCarta= cartas.remove(0);
-        System.out.println(primeraCarta+"\n"+"Quedan "+cartas.size()+" cartas en deck");
+    public void head() throws Exception {
+        if (cartas.isEmpty()) {
+            throw new Exception("Se han agotado las cartas");
+        }
+        Card primeraCarta = cartas.remove(0);
+        System.out.println(primeraCarta + "\n" + "Quedan " + cartas.size() + " cartas en deck");
     }
 
-    public void pick(){
-        Random aleatorio= new Random();
+    public void pick() throws Exception {
+        if (cartas.isEmpty()) {
+            throw new Exception("Se han agotado las cartas");
+        }
+        Random aleatorio = new Random();
         int index = aleatorio.nextInt(cartas.size());
         Card CartaSeleccionada = cartas.remove(index);
-        System.out.println(CartaSeleccionada+"\n"+"Quedan "+cartas.size()+" cartas en deck");
+        System.out.println(CartaSeleccionada + "\n" + "Quedan " + cartas.size() + " cartas en deck");
     }
 
-    public void hand(){
-        for(int i=1;i<=5;i++){
-            Card carta=cartas.remove(0);
+    public void hand() throws Exception {
+        if (cartas.size() < 5) {
+            throw new Exception("No hay suficientes cartas para generar una mano de 5 cartas");
+        }
+        for(int i = 1; i <= 5; i++) {
+            Card carta = cartas.remove(0);
             System.out.println(carta);
         }
-        System.out.println("Quedan "+cartas.size()+" cartas en deck");
+        System.out.println("Quedan " + cartas.size() + " cartas en deck");
     }
 }
